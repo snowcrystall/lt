@@ -1,4 +1,4 @@
-package main
+package problems
 
 func lengthOfLongestSubstring(s string) int {
 	var i, j, t, sublen, maxlen int = 0, 1, 0, 0, 0

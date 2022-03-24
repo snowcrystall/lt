@@ -1,4 +1,4 @@
-package main
+package problems
 
 func check(bloomDay []int, m int, k int, day int) bool {
 	n := len(bloomDay)

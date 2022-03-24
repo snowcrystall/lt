@@ -1,4 +1,4 @@
-package main
+package problems
 
 type BrowserHistory struct {
 	history []string
@@ -9,29 +9,29 @@ func Constructor(homepage string) BrowserHistory {
 	return BrowserHistory{[]string{homepage}, 0}
 }
 
-func (this *BrowserHistory) Visit(url string) {
-	this.history = this.history[:this.cur+1]
-	this.cur++
-	this.history = append(this.history, url)
+func (b *BrowserHistory) Visit(url string) {
+	b.history = b.history[:b.cur+1]
+	b.cur++
+	b.history = append(b.history, url)
 }
 
-func (this *BrowserHistory) Back(steps int) string {
-	if steps > this.cur {
-		this.cur = 0
-		return this.history[0]
+func (b *BrowserHistory) Back(steps int) string {
+	if steps > b.cur {
+		b.cur = 0
+		return b.history[0]
 	} else {
-		this.cur -= steps
-		return this.history[this.cur]
+		b.cur -= steps
+		return b.history[b.cur]
 	}
 }
 
-func (this *BrowserHistory) Forward(steps int) string {
-	if len(this.history[:])-this.cur > steps {
-		this.cur += steps
-		return this.history[this.cur]
+func (b *BrowserHistory) Forward(steps int) string {
+	if len(b.history[:])-b.cur > steps {
+		b.cur += steps
+		return b.history[b.cur]
 	} else {
-		this.cur = len(this.history[:]) - 1
-		return this.history[this.cur]
+		b.cur = len(b.history[:]) - 1
+		return b.history[b.cur]
 	}
 
 }

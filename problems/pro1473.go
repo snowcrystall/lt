@@ -1,4 +1,4 @@
-package main
+package problems
 
 // https://leetcode.com/problems/paint-house-iii/
 

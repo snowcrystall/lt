@@ -1,4 +1,4 @@
-package main
+package problems
 
 import (
 	"log"
@@ -10,9 +10,9 @@ func TestVisit(t *testing.T) {
 	h.Visit("google.com")
 	h.Visit("facebook.com")
 	h.Visit("youtube.com")
-	log.Printf(h.Back(1))
-	log.Printf(h.Back(1))
+	log.Println(h.Back(1))
+	log.Println(h.Back(1))
 	h.Visit("linkedin.com")
-	log.Printf(h.Forward(2))
-	log.Printf(h.Forward(3))
+	log.Println(h.Forward(2))
+	log.Println(h.Forward(3))
 }
