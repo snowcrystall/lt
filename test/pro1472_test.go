@@ -1,12 +1,14 @@
-package problems
+package test
 
 import (
 	"log"
 	"testing"
+
+	"github.com/snowcrystall/leetcode-go/problems"
 )
 
 func TestVisit(t *testing.T) {
-	h := Constructor("leetcode.com")
+	h := problems.Constructor("leetcode.com")
 	h.Visit("google.com")
 	h.Visit("facebook.com")
 	h.Visit("youtube.com")

@@ -20,7 +20,7 @@ func check(bloomDay []int, m int, k int, day int) bool {
 	}
 	return false
 }
-func minDays(bloomDay []int, m int, k int) int {
+func MinDays(bloomDay []int, m int, k int) int {
 	l := 0
 	r := 1000000000
 	res := -1

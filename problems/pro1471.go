@@ -58,7 +58,7 @@ func getStrongest(arr []int, k int) []int {
 }
 */
 // solution use double ptr
-func getStrongest(arr []int, k int) []int {
+func GetStrongest(arr []int, k int) []int {
 	sort.Ints(arr)
 	arrM := arr[(len(arr)-1)/2]
 	i := 0
