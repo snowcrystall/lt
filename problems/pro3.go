@@ -1,6 +1,6 @@
 package problems
 
-func lengthOfLongestSubstring(s string) int {
+func LengthOfLongestSubstring(s string) int {
 	var i, j, t, sublen, maxlen int = 0, 1, 0, 0, 0
 	len := len(s)
 	if len <= 1 {

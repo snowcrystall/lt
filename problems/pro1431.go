@@ -32,7 +32,7 @@ package problems
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-func kidsWithCandies(candies []int, extraCandies int) []bool {
+func KidsWithCandies(candies []int, extraCandies int) []bool {
 	var max int
 	res := make([]bool, len(candies))
 	for _, v := range candies {

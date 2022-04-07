@@ -9,17 +9,7 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-/*func inorderTraversal(root *TreeNode) []int {
-	res := []int{}
-	if root != nil {
-		res = append(res, inorderTraversal(root.Left)...)
-		res = append(res, root.Val)
-		res = append(res, inorderTraversal(root.Right)...)
-	}
-	return res
-}*/
-
-func inorderTraversal(root *TreeNode) []int {
+func InorderTraversal(root *TreeNode) []int {
 	res := []int{}
 	stack := []*TreeNode{}
 	for root != nil || len(stack) > 0 {
@@ -33,5 +23,20 @@ func inorderTraversal(root *TreeNode) []int {
 		root = root.Right
 	}
 	return res
+
+}
+
+// 100.  same-tree
+func IsSameTree(p *TreeNode, q *TreeNode) bool {
+	if p == nil && q == nil {
+		return true
+	}
+	if p == nil || q == nil {
+		return false
+	}
+	if p.Val != q.Val {
+		return false
+	}
+	return IsSameTree(p.Left, q.Left) && IsSameTree(p.Right, q.Right)
 
 }
