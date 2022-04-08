@@ -4,7 +4,7 @@ import (
 	"sort"
 )
 
-func canReorderDoubled(arr []int) bool {
+func CanReorderDoubled(arr []int) bool {
 	if len(arr) == 0 {
 		return false
 	}

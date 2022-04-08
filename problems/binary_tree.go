@@ -42,7 +42,16 @@ func IsSameTree(p *TreeNode, q *TreeNode) bool {
 }
 
 //101. 对称二叉树 给你一个二叉树的根节点 root ， 检查它是否轴对称
-// TODO
-func IsSymmetric(root *TreeNode) bool {
-	return true
+func isSymmetric(root *TreeNode) bool {
+	return dfscheck(root.Left, root.Right)
+}
+
+func dfscheck(left, right *TreeNode) bool {
+	if left == nil && right == nil {
+		return true
+	}
+	if left == nil || right == nil {
+		return false
+	}
+	return left.Val == right.Val && dfscheck(left.Left, right.Right) && dfscheck(left.Right, right.Left)
 }

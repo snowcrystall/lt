@@ -5,7 +5,7 @@ import (
 	"unicode"
 )
 
-func strongPasswordChecker(password string) int {
+func StrongPasswordChecker(password string) int {
 	res := 0
 	if len(password) < 6 {
 		addNum := 6 - len(password)
