@@ -55,3 +55,14 @@ func dfscheck(left, right *TreeNode) bool {
 	}
 	return left.Val == right.Val && dfscheck(left.Left, right.Right) && dfscheck(left.Right, right.Left)
 }
+
+//104. 二叉树的最大深度
+func maxDepth(root *TreeNode) int {
+	if root == nil {
+        return 0
+    }
+    if root.Left == nil && root.Right == nil {
+        return 1
+    }
+    return max(maxDepth(root.Left),maxDepth(root.Right))+1
+}
