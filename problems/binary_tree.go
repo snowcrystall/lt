@@ -59,10 +59,22 @@ func dfscheck(left, right *TreeNode) bool {
 //104. 二叉树的最大深度
 func maxDepth(root *TreeNode) int {
 	if root == nil {
-        return 0
-    }
-    if root.Left == nil && root.Right == nil {
-        return 1
-    }
-    return max(maxDepth(root.Left),maxDepth(root.Right))+1
+		return 0
+	}
+	if root.Left == nil && root.Right == nil {
+		return 1
+	}
+	return max(maxDepth(root.Left), maxDepth(root.Right)) + 1
+}
+
+//108. 将有序数组转换为二叉搜索树
+func sortedArrayToBST(nums []int) *TreeNode {
+	root := &TreeNode{}
+	if len(nums) == 0 {
+		return nil
+	}
+	root.Val = nums[len(nums)/2]
+	root.Left = sortedArrayToBST(nums[0 : len(nums)/2])
+	root.Right = sortedArrayToBST(nums[len(nums)/2+1 : len(nums)])
+	return root
 }
