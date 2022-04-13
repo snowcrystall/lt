@@ -1,5 +1,7 @@
 package problems
 
+import "math"
+
 /**
  * Definition for a binary tree node.
  */
@@ -77,4 +79,21 @@ func sortedArrayToBST(nums []int) *TreeNode {
 	root.Left = sortedArrayToBST(nums[0 : len(nums)/2])
 	root.Right = sortedArrayToBST(nums[len(nums)/2+1 : len(nums)])
 	return root
+}
+
+//110. 平衡二叉树 给定一个二叉树，判断它是否是高度平衡的二叉树。
+func isBalanced(root *TreeNode) bool {
+	return height(root) >= 0
+}
+
+func height(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+	leftHeight := height(root.Left)
+	rightHeight := height(root.Right)
+	if leftHeight == -1 || rightHeight == -1 || math.Abs(float64(leftHeight-rightHeight)) > 1 {
+		return -1
+	}
+	return int(math.Max(float64(leftHeight), float64(rightHeight))) + 1
 }
