@@ -11,3 +11,119 @@ func hammingWeight(num uint32) int {
 	}
 	return one
 }
+
+/*
+ * 868. Binary Gap
+ * Given a positive integer n, find and return the longest distance between any two adjacent 1's in the binary representation of n. If there are no two adjacent 1's, return 0.
+
+Two 1's are adjacent if there are only 0's separating them (possibly no 0's). The distance between two 1's is the absolute difference between their bit positions. For example, the two 1's in "1001" have a distance of 3
+ https://leetcode-cn.com/problems/binary-gap/
+*/
+
+func binaryGap(n int) int {
+	max := 0
+	dis := 0
+	for n > 0 {
+		if n&1 == 1 {
+
+			if max < dis {
+				max = dis
+			}
+
+			dis = 1
+
+		} else if dis != 0 {
+			dis++
+		}
+		n = n >> 1
+	}
+	return max
+}
+
+//118. Pascal's Triangle
+func generate(numRows int) [][]int {
+	res := [][]int{}
+
+	for i := 0; i < numRows; i++ {
+		tmp := []int{}
+		if i == 0 {
+			tmp = append(tmp, 1)
+		} else {
+			tmp = append(tmp, 1)
+			for j := 1; j < i; j++ {
+				tmp = append(tmp, res[i-1][j-1]+res[i-1][j])
+			}
+			tmp = append(tmp, 1)
+		}
+		res = append(res, tmp)
+	}
+	return res
+}
+
+//119. https://leetcode-cn.com/problems/pascals-triangle-ii/
+func getRow(rowIndex int) []int {
+	tmp1 := []int{}
+	tmp2 := []int{}
+	for i := 0; i < rowIndex+1; i++ {
+		if i == 0 {
+			tmp1 = append(tmp1, 1)
+		} else {
+			tmp2 = append(tmp2, 1)
+			for j := 1; j < i; j++ {
+				tmp2 = append(tmp2, tmp1[j-1]+tmp1[j])
+			}
+			tmp2 = append(tmp2, 1)
+
+			tmp1, tmp2 = tmp2, tmp1
+
+			tmp2 = tmp2[:0]
+		}
+	}
+	return tmp1
+}
+
+//121. 买卖股票的最佳时机 https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/
+func maxProfit(prices []int) int {
+	maxsub := 0
+	min := prices[0]
+	for _, v := range prices {
+		if v < min {
+			min = v
+		} else {
+			if v-min > maxsub {
+				maxsub = v - min
+			}
+		}
+	}
+	return maxsub
+}
+
+//136. 只出现一次的数字
+func singleNumber(nums []int) int {
+	res := 0
+	for _, v := range nums {
+		res ^= v
+	}
+	return res
+}
+
+//169. 多数元素
+func majorityElement(nums []int) int {
+	count := 0
+	candidate := 0
+
+	for _, v := range nums {
+		if count == 0 {
+			candidate = v
+		}
+		if v == candidate {
+			count++
+		} else {
+			count--
+		}
+
+	}
+
+	return candidate
+
+}
