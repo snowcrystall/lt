@@ -112,6 +112,43 @@ func minDepth(root *TreeNode) int {
 	return min(minDepth(root.Left), minDepth(root.Right)) + 1
 }
 
+// 112.path-sum 判断该树中是否存在 根节点到叶子节点 的路径，这条路径上所有节点值相加等于目标和 targetSum
+func hasPathSum(root *TreeNode, targetSum int) bool {
+	if root == nil {
+		return false
+	}
+	if root.Left == nil && root.Right == nil {
+		return targetSum == root.Val
+	}
+	return hasPathSum(root.Left, targetSum-root.Val) || hasPathSum(root.Right, targetSum-root.Val)
+
+}
+
+//144. 二叉树的前序遍历
+func preorderTraversal(root *TreeNode) (res []int) {
+
+	if root == nil {
+		res = []int{}
+		return
+	}
+	res = append(res, root.Val)
+	res = append(res, preorderTraversal(root.Left)...)
+	res = append(res, preorderTraversal(root.Right)...)
+	return
+}
+
+//145. 二叉树的后序遍历
+func postorderTraversal(root *TreeNode) (res []int) {
+	if root == nil {
+		res = []int{}
+		return
+	}
+
+	res = append(res, postorderTraversal(root.Left)...)
+	res = append(res, postorderTraversal(root.Right)...)
+	res = append(res, root.Val)
+	return
+}
 func min(a, b int) int {
 
 	if a < b {
