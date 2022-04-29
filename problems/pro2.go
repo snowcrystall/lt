@@ -18,11 +18,6 @@ package problems
 链接：https://leetcode-cn.com/problems/add-two-numbers
 */
 
-// Definition for singly-linked list.
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
 type List struct {
 	head *ListNode
 	tail *ListNode
