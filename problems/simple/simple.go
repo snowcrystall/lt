@@ -127,3 +127,40 @@ func majorityElement(nums []int) int {
 	return candidate
 
 }
+
+//168. https://leetcode-cn.com/problems/excel-sheet-column-title/
+func convertToTitle(columnNumber int) string {
+
+	ans := []byte{}
+	for columnNumber > 0 {
+		a0 := (columnNumber-1)%26 + 1
+		ans = append(ans, 'A'+byte(a0-1))
+		columnNumber = (columnNumber - a0) / 26
+	}
+	for i, n := 0, len(ans); i < n/2; i++ {
+		ans[i], ans[n-1-i] = ans[n-1-i], ans[i]
+	}
+	return string(ans)
+
+}
+
+//171. https://leetcode-cn.com/problems/excel-sheet-column-number/
+func titleToNumber(columnTitle string) int {
+	sum := 0
+	for i, multiple := len(columnTitle)-1, 1; i >= 0; i-- {
+		k := columnTitle[i] - 'A' + 1
+		sum += int(k) * multiple
+		multiple *= 26
+	}
+	return sum
+}
+
+//190. https://leetcode-cn.com/problems/reverse-bits/
+func reverseBits(num uint32) uint32 {
+	var rev uint32
+	for i := 0; i < 32 && num > 0; i++ {
+		rev |= num & 1 << (31 - i)
+		num >>= 1
+	}
+	return rev
+}
