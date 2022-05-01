@@ -149,6 +149,43 @@ func postorderTraversal(root *TreeNode) (res []int) {
 	res = append(res, root.Val)
 	return
 }
+//归并2颗二叉搜索树
+func getAllElements(root1 *TreeNode, root2 *TreeNode) []int {
+    nums1 := inorderTraversal(root1)
+    nums2 := inorderTraversal(root2)
+    p1, n1 := 0, len(nums1)
+    p2, n2 := 0, len(nums2)
+    merged := make([]int, 0, n1+n2)
+    for {
+        if p1 == n1 {
+            return append(merged, nums2[p2:]...)
+        }
+        if p2 == n2 {
+            return append(merged, nums1[p1:]...)
+        }
+        if nums1[p1] < nums2[p2] {
+            merged = append(merged, nums1[p1])
+            p1++
+        } else {
+            merged = append(merged, nums2[p2])
+            p2++
+        }
+    }
+
+}
+//中序遍历
+func inorderTraversal(root *TreeNode) (res []int) {
+
+	if root == nil {
+		res = []int{}
+		return
+	}
+	
+	res = append(res, inorderTraversal(root.Left)...)
+    res = append(res, root.Val)
+	res = append(res, inorderTraversal(root.Right)...)
+	return
+}
 func min(a, b int) int {
 
 	if a < b {
