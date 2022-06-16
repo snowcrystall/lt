@@ -1,18 +1,16 @@
 package simple
 
-import "math"
-
 type MinStack struct {
 	stack    []int
 	minStack []int
 }
 
-func Constructor() MinStack {
+/*func Constructor() MinStack {
 	return MinStack{
 		stack:    []int{},
 		minStack: []int{math.MaxInt64},
 	}
-}
+}*/
 
 func (this *MinStack) Push(x int) {
 	this.stack = append(this.stack, x)
