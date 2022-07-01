@@ -4,9 +4,9 @@ type MyStack struct {
 	queue []int
 }
 
-func Constructor() (s MyStack) {
+/*func Constructor() (s MyStack) {
 	return
-}
+}*/
 
 func (s *MyStack) Push(x int) {
 	n := len(s.queue)

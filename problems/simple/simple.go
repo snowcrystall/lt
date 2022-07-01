@@ -161,6 +161,24 @@ func titleToNumber(columnTitle string) int {
 	return sum
 }
 
+//202. https://leetcode.cn/problems/happy-number/
+func isHappy(n int) bool {
+
+	var step = func(n int) int {
+		sum := 0
+		for n > 0 {
+			sum += (n % 10) * (n % 10)
+			n = n / 10
+		}
+		return sum
+	}
+
+	m := map[int]bool{}
+	for ; n != 1 && !m[n]; n, m[n] = step(n), true {
+	}
+	return n == 1
+}
+
 //190. https://leetcode-cn.com/problems/reverse-bits/
 func reverseBits(num uint32) uint32 {
 	var rev uint32
